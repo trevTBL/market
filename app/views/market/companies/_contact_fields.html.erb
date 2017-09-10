@@ -1,0 +1,16 @@
+<div class='nested-fields'>
+	<div class="row">
+		<div class="col-md-8">
+			<%= f.input :name %>
+			<%= link_to_remove_association "remove team member", f %>
+		</div>
+		<div class="col-md-4">
+			<%= f.input :role, 
+		  collection: company_role_options,
+		  include_blank: '- Select -',
+		  input_html: { class: 'chosen-select form-control' }  
+		  %>
+		</div>
+		<hr/>
+	</div>
+</div>

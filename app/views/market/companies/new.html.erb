@@ -1,0 +1,17 @@
+<h1>Companies#new</h1>
+<p>Find me in app/views/market/companies/new.html.erb</p>
+	<%= simple_form_for @company do |f| %>
+		<% if f.object.errors.any? %>
+		  <div id="error_explanation">
+		  <%= pluralize(f.object.errors.count, "error") %> prohibited this article from being saved:
+		 
+		    <ul>
+		    <%= f.object.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+		  	<% end %>
+		<%= render :partial=> 'form', :locals=>{f: f} %>
+		<%= f.submit %>
+	<% end %>

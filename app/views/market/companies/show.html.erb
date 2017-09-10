@@ -1,0 +1,88 @@
+<h1>Companies#show</h1>
+<p>Find me in app/views/market/companies/show.html.erb</p>
+
+<h1><%= @company.name %></h2>
+<p>
+	<%= @company.pitch %>
+</p>
+<p>
+	<%= @company.website %>
+</p>
+<p>
+	<%= @company.product %>
+</p>
+<p>
+	<%= @company.goal %>
+</p>
+<p>
+	<%= @company.category %>
+</p>
+<p>
+	<%= @company.compsize %>
+</p>
+<p>
+	<% @company.market.each do |market| %>
+		<%= market %><br/>
+	<% end %>
+</p>
+<p>
+	<% @company.location.each do |location| %>
+		<%= location %><br/>
+	<% end %>
+</p>
+<h3>Headquarters</h3>
+<p>
+	<% @company.addresses.each do |address| %>
+		<p><%= address.address1 %></p>
+		<p><%= address.address2 %></p>
+		<p><%= address.city %>, <%= address.state %> <%= address.zip %></p>
+		<p><%= address.phone %></p>
+	<% end %>
+</p>
+
+<h3>Media</h3>
+<p>
+	<%= @company.logo %>
+</p>
+<p>
+	<%= @company.video %>
+</p>
+<p>
+	<%= @company.image %>
+</p>
+<h3>Links</h3>
+<p>
+	<%= @company.facebook %>
+</p>
+<p>
+	<%= @company.linkedin %>
+</p>
+<p>
+	<%= @company.blog %>
+</p>
+<p>
+	<%= @company.crunchbase %>
+</p>
+
+<h3>Products</h3>
+<p>
+	<% @company.products.each do |product| %>
+		<p class="lead"><%= product.title %></p>
+    <p><%= product.summary %></p>
+    <p><%= product.release %></p>
+    <p><%= product.launched %></p>
+    <p><%= product.website %></p>
+    <p><%= product.description %></p>
+    <p><%= product.images %></p>
+    <p><%= product.cover %></p>
+    <p><%= product.video %></p>
+	<% end %>
+</p>
+<h3>Team</h3>
+<p>
+	<% @company.contacts.each do |contact| %>
+		<p>
+			<strong><%= contact.name %></strong>, <%= contact.role %>
+		</p>
+	<% end %>
+</p>
