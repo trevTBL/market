@@ -86,7 +86,7 @@
 <h3>Products</h3>
 <p>
 	<% @company.products.each do |product| %>
-		<p class="lead"><%= product.title %></p>
+		<h4><%= product.title %></h4>
     <p><%= product.summary %></p>
     <p><%= product.release %></p>
     <p><%= product.launched %></p>

@@ -25,19 +25,77 @@
 </footer>
 	
   <script type="text/javascript">
-       $(document).ready(function() {
-           $("#locations,#ulocations").tagit({
-              availableTags: <%=raw locations_options.to_json %>,
-              allowSpaces: true
-          });
+     $(document).ready(function() {
+         $("#locations,#ulocations").tagit({
+            availableTags: <%=raw locations_options.to_json %>,
+            allowSpaces: true
         });
-       $(document).ready(function() {
-           $("#markets,#umarkets").tagit({
-              availableTags: <%=raw industry_options.to_json %>,
-              allowSpaces: true
-          });
+      });
+     $(document).ready(function() {
+         $("#markets,#umarkets").tagit({
+            availableTags: <%=raw industry_options.to_json %>,
+            allowSpaces: true
         });
-    </script>
+      });
+  </script>
+  <script>
+    $('#mini').simplyCountable({
+      counter:            '#minicounter',
+      countType:          'characters',
+      maxCount:           140,
+      strictMax:          true,
+    });
+
+    $('#whatido').simplyCountable({
+      counter:            '#whatcounter',
+      countType:          'characters',
+      maxCount:           300,
+      strictMax:          true,
+    });
+
+    $('#lookingfor').simplyCountable({
+      counter:            '#lookingcounter',
+      countType:          'characters',
+      maxCount:           300,
+      strictMax:          true,
+    });
+
+    $('#achievement').simplyCountable({
+      counter:            '#achievecounter',
+      countType:          'characters',
+      maxCount:           300,
+      strictMax:          true,
+    });
+
+    $('#pitch').simplyCountable({
+      counter:            '#pitchcounter',
+      countType:          'characters',
+      maxCount:           300,
+      strictMax:          true,
+    });
+
+
+    $('#product').simplyCountable({
+      counter:            '#procounter',
+      countType:          'characters',
+      maxCount:           1000,
+      strictMax:          true,
+    });
+
+    $('#summary').simplyCountable({
+      counter:            '#summarycounter',
+      countType:          'characters',
+      maxCount:           140,
+      strictMax:          true,
+    });
+
+    $('#description').simplyCountable({
+      counter:            '#descounter',
+      countType:          'characters',
+      maxCount:           500,
+      strictMax:          true,
+    });
+  </script>
 
 </body>
 </html>
