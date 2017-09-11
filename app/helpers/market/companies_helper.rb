@@ -373,6 +373,8 @@ module Market
 				"Petroleum Products Wholesalers",
 			]
 		end
-	
+		def default_image
+			return 'http://placehold.it/350x150'
+		end
   end
 end

@@ -1,6 +1,17 @@
 <h1>Companies#new</h1>
 <p>Find me in app/views/market/companies/new.html.erb</p>
 	<%= simple_form_for @company do |f| %>
+	  <div class="container">
+	  	<hr/>
+			<div class="row">
+				<div class="col-md-10">
+				</div>
+				<div class="col-md-2">
+					<%= f.submit class: 'btn btn-primary btn-lg btn-block' %>
+				</div>
+			</div>
+			<hr/>
+		</div>
 		<% if f.object.errors.any? %>
 		  <div id="error_explanation">
 		  <%= pluralize(f.object.errors.count, "error") %> prohibited this article from being saved:
@@ -13,5 +24,16 @@
 		  </div>
 		  	<% end %>
 		<%= render :partial=> 'form', :locals=>{f: f} %>
-		<%= f.submit %>
+		<div class="container">
+			<hr/>
+			<div class="row">
+				<div class="col-md-10">
+				</div>
+				<div class="col-md-2">
+					<%= f.submit  class: 'btn btn-primary btn-lg btn-block' %>
+				</div>
+			</div>
+			<hr/>
+		</div>
+
 	<% end %>

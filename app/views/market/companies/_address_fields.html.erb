@@ -1,0 +1,19 @@
+<div class='nested-fields'>
+	<div class="row">
+		<hr/>
+		<div class="col-md-12">
+			<%= f.input :phone %>
+			<%= f.input :address1 %>
+			<%= f.input :address2 %>
+			<%= f.input :city %>
+			<%= f.input :state, 
+				collection: location_options,
+				include_blank: '- Select -',
+				input_html: { class: 'chosen-select form-control' }  
+			%>
+			<%= f.input :zip %>
+			<%= link_to_remove_association "remove location", f %>
+		</div>
+		<hr/>
+	</div>
+</div>

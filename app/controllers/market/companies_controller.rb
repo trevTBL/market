@@ -11,14 +11,16 @@ module Market
     end
 
     def new
-        @company = Company.new
+        @user = current_user
+        @company = @user.companies.new
         products = @company.products.build if @company.products.count < 1
         3.times {@company.contacts.build} if @company.contacts.count < 1
         1.times {@company.addresses.build} if @company.addresses.count < 1
     end
 
     def create
-        @company = Company.new(company_params)
+        @user = current_user
+        @company = @user.companies.new(company_params)
         if @company.save
           redirect_to @company
         else 

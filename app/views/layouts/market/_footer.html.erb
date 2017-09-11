@@ -24,7 +24,20 @@
  </div>
 </footer>
 	
-
+  <script type="text/javascript">
+       $(document).ready(function() {
+           $("#locations,#ulocations").tagit({
+              availableTags: <%=raw locations_options.to_json %>,
+              allowSpaces: true
+          });
+        });
+       $(document).ready(function() {
+           $("#markets,#umarkets").tagit({
+              availableTags: <%=raw industry_options.to_json %>,
+              allowSpaces: true
+          });
+        });
+    </script>
 
 </body>
 </html>

@@ -1,116 +1,113 @@
- <div class="row">
-		  <div class="col-md-6">
-		  	<h3>Your company</h3>
-				<div class="well">
-						<%= f.input :name %>
-						<%= f.input :category, 
-					  collection: company_category_options,
-					  include_blank: '- Select -',
-					  input_html: { class: 'chosen-select form-control' }  
-					  %>
-						<%= f.input :compsize, 
-					  collection: company_size_options,
-					  include_blank: '- Select -',
-					  input_html: { class: 'chosen-select form-control' }  
-					  %>
-					<%= f.input :market_list, :class=>"form-control", :input_html => {:id=>'markets', :value=> @company.market_list.to_s},  label:  'Market' %>
+<div class="container">
+	<h3>Your company</h3>
+	<div class="well">
+			<%= f.input :name %>
+			<%= f.input :category, 
+		  collection: company_category_options,
+		  include_blank: '- Select -',
+		  input_html: { class: 'chosen-select form-control' }  
+		  %>
+			<%= f.input :compsize, 
+		  collection: company_size_options,
+		  include_blank: '- Select -',
+		  input_html: { class: 'chosen-select form-control' }  
+		  %>
+		<%= f.input :market_list, :class=>"form-control", :input_html => {:id=>'markets', :value=> @company.market_list.to_s},  label:  'Market' %>
 
-					<%= f.input :location_list, :class=>"form-control", :input_html => {:id=>'locations', :value=>@company.location_list.to_s},  label:  'Location' %>
-					<span class="pull-right"><small>Remaining: <span id="pitchcounter"></span></small></span>
-						<%= f.input :pitch, :input_html => {:rows => 4, id: 'pitch'}, maxlength: 350 %>
-						<span class="pull-right"><small>Remaining: <span id="procounter"></span></small></span>
-						<%= f.input :product, :input_html => {:rows => 4, id: 'product'}, maxlength: 1000 %>
-						
-						<%= f.input :goal, 
-					  collection: company_goal_options,
-					  include_blank: '- Select -',
-					  input_html: { class: 'chosen-select form-control' }  
-					  %>
-				</div>
-				<hr/>
-				<h3>Headquarters</h3>
-				<div class="well">
-				  <%= f.simple_fields_for(:addresses) do |address| %>
-						<%= address.input :phone %>
-					  <%= address.input :address1 %>
-						<%= address.input :address2 %>
-						<%= address.input :city %>
-						<%= address.input :state, 
-					  collection: location_options,
-					  include_blank: '- Select -',
-					  input_html: { class: 'chosen-select form-control' }  
-					  %>
-						<%= address.input :zip %>
-					<% end %>
-
-					</div>
-					
-					<hr/>
-					<h3>Media</h3>
-					<div class="well">
-						<%= f.input :logo %>
-						<%= f.input :video %>
-						<%= f.input :image %>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<h3>Flagship product</h3>
-					<div class="well">
-						<%= f.simple_fields_for(:products) do |product| %>
-							<%= product.input :title %>
-							<span class="pull-right"><small>Remaining: <span id="summarycounter"></span></small></span>
-		          <%= product.input :summary, :input_html => {:rows => 4, id: 'summary'}, maxlength: 140 %>
-		          <%= product.input :release, 
-						  collection: product_release_options,
-						  include_blank: '- Select -',
-						  input_html: { class: 'chosen-select form-control' }  
-						  %>
-		          <%= product.input :launched,
-		                input_html: {data: {date_options: {defaultDate: Date.today}}} %>
-		          <%= product.input :website %> 
-		          <span class="pull-right"><small>Remaining: <span id="descounter"></span></small></span>
-		          <%= product.input :description, :input_html => {:rows => 4, id: 'description'}, maxlength: 500 %>
-		         
-		          <%= product.input :images %>
-		          <%= product.input :cover %>
-		          <%= product.input :video %>
-						<% end %>
-					</div>
+		<%= f.input :location_list, :class=>"form-control", :input_html => {:id=>'locations', :value=>@company.location_list.to_s},  label:  'Location' %>
+		<span class="pull-right"><small>Remaining: <span id="pitchcounter"></span></small></span>
+			<%= f.input :pitch, :input_html => {:rows => 4, id: 'pitch'}, maxlength: 350 %>
+			<span class="pull-right"><small>Remaining: <span id="procounter"></span></small></span>
+			<%= f.input :product, :input_html => {:rows => 4, id: 'product'}, maxlength: 1000 %>
 			
-					<hr/>
-					<h3>Your team</h3>
-					<p>Add your founding/leadership team. Don't forget to add yourself!</p>
-					<div class="well" id="contacts">
-							<%= f.simple_fields_for(:contacts) do |contact| %>
-								<div class="row">
-									<div class="col-md-8">
-										<%= contact.input :name %>
-									</div>
-									<div class="col-md-4">
-										<%= contact.input :role, 
-									  collection: company_role_options,
-									  include_blank: '- Select -',
-									  input_html: { class: 'chosen-select form-control' }  
-									  %>
-									</div>
-									<hr/>
-								</div>
-							<% end %>
-						
-						<div class="links">
-							<%= link_to_add_association 'add team member', f, :contacts %>
-						</div>
+			<%= f.input :goal, 
+		  collection: company_goal_options,
+		  include_blank: '- Select -',
+		  input_html: { class: 'chosen-select form-control' }  
+		  %>
+	</div>
+	<hr/>
+	<h3>Locations</h3>
+	<div class="well"  id="addresses">
+	  <%= f.simple_fields_for(:addresses) do |address| %>
+			<%= address.input :phone %>
+		  <%= address.input :address1 %>
+			<%= address.input :address2 %>
+			<%= address.input :city %>
+			<%= address.input :state, 
+		  collection: location_options,
+		  include_blank: '- Select -',
+		  input_html: { class: 'chosen-select form-control' }  
+		  %>
+			<%= address.input :zip %>
+		<% end %>
+		<div class="links">
+			<%= link_to_add_association 'add location', f, :addresses %>
+		</div>
+	</div>
+	<hr/>
+	<h3>Your team</h3>
+	<p>Add your founding/leadership team. Don't forget to add yourself!</p>
+	<div class="well" id="contacts">
+			<%= f.simple_fields_for(:contacts) do |contact| %>
+				<div class="row">
+					<div class="col-md-8">
+						<%= contact.input :name %>
 					</div>
-					<hr/>
-					<h3>Company Links</h3>
-					<div class="well">
-						<%= f.input :website %>
-						<%= f.input :facebook %>
-						<%= f.input :linkedin %>
-						<%= f.input :blog %>
-						<%= f.input :crunchbase %>
+					<div class="col-md-4">
+						<%= contact.input :role, 
+					  collection: company_role_options,
+					  include_blank: '- Select -',
+					  input_html: { class: 'chosen-select form-control' }  
+					  %>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-			</div>
+			<% end %>
+		
+		<div class="links">
+			<%= link_to_add_association 'add team member', f, :contacts %>
+		</div>
+	</div>
+	<hr/>
+	<h3>Products</h3>
+	<div class="well" id="products">
+		<%= f.simple_fields_for(:products) do |product| %>
+			<%= product.input :title %>
+			<span class="pull-right"><small>Remaining: <span id="summarycounter"></span></small></span>
+      <%= product.input :summary, :input_html => {:rows => 4, id: 'summary'}, maxlength: 140 %>
+      <%= product.input :release, 
+		  collection: product_release_options,
+		  include_blank: '- Select -',
+		  input_html: { class: 'chosen-select form-control' }  
+		  %>
+      <%= product.input :launched,
+            input_html: {data: {date_options: {defaultDate: Date.today}}} %>
+      <%= product.input :website %> 
+      <span class="pull-right"><small>Remaining: <span id="descounter"></span></small></span>
+      <%= product.input :description, :input_html => {:rows => 4, id: 'description'}, maxlength: 500 %>
+     
+      <%= product.input :images %>
+      <%= product.input :cover %>
+      <%= product.input :video %>
+		<% end %>
+		<div class="links">
+			<%= link_to_add_association 'add product', f, :products %>
+		</div>
+	</div>
+	<h3>Media</h3>
+	<div class="well">
+		<%= f.input :logo %>
+		<%= f.input :video %>
+		<%= f.input :image %>
+	</div>
+	
+	<hr/>
+	<h3>Company Links</h3>
+	<div class="well">
+		<%= f.input :website %>
+		<%= f.input :facebook %>
+		<%= f.input :linkedin %>
+		<%= f.input :blog %>
+		<%= f.input :crunchbase %>
+	</div>
+</div>

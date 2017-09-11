@@ -1,0 +1,26 @@
+<div class='nested-fields'>
+	<div class="row">
+		<hr/>
+		<div class="col-md-12">
+				<%= f.input :title %>
+				<span class="pull-right"><small>Remaining: <span id="summarycounter"></span></small></span>
+        <%= f.input :summary, :input_html => {:rows => 4, id: 'summary'}, maxlength: 140 %>
+        <%= f.input :release, 
+			  collection: product_release_options,
+			  include_blank: '- Select -',
+			  input_html: { class: 'chosen-select form-control' }  
+			  %>
+        <%= f.input :launched,
+              input_html: {data: {date_options: {defaultDate: Date.today}}} %>
+        <%= f.input :website %> 
+        <span class="pull-right"><small>Remaining: <span id="descounter"></span></small></span>
+        <%= f.input :description, :input_html => {:rows => 4, id: 'description'}, maxlength: 500 %>
+       
+        <%= f.input :images %>
+        <%= f.input :cover %>
+        <%= f.input :video %>
+			  <%= link_to_remove_association "remove product", f %>
+		</div>
+		<hr/>
+	</div>
+</div>
