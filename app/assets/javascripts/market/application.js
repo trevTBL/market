@@ -13,6 +13,8 @@
 //= require jquery-ui
 //= require cocoon
 //= require tag-it
-//= main_app::jquery-simply-countable/*
+//= require moment
+//= require bootstrap-datetimepicker
+//= jquery-simply-countable/*
 //= require_tree .
 

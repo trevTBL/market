@@ -80,7 +80,7 @@
 		  include_blank: '- Select -',
 		  input_html: { class: 'chosen-select form-control' }  
 		  %>
-      <%= product.input :launched,
+      <%= product.input :launched, :as => :date_picker,
             input_html: {data: {date_options: {defaultDate: Date.today}}} %>
       <%= product.input :website %> 
       <span class="pull-right"><small>Remaining: <span id="descounter"></span></small></span>

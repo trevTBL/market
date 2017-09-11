@@ -1,116 +1,226 @@
-<h1>Companies#show</h1>
-<p>Find me in app/views/market/companies/show.html.erb</p>
-
-<h1><%= @company.name %></h2>
-<small><%= link_to 'Edit', edit_company_path(@company) %></small>
-<p>
-	<%= @company.pitch %>
-</p>
-<p>
-	<%= @company.product %>
-</p>
-<p>
-	<%= @company.goal %>
-</p>
-<p>
-	<%= @company.category %>
-</p>
-<p>
-	<%= @company.compsize %>
-</p>
-<p>
-	<% @company.market.each do |market| %>
-		<%= market %><br/>
-	<% end %>
-</p>
-<p>
-	<% @company.location.each do |location| %>
-		<%= location %><br/>
-	<% end %>
-</p>
-<h3>Headquarters</h3>
-<p>
-	<% @company.addresses.each do |address| %>
-		<p><%= address.address1 %></p>
-		<p><%= address.address2 %></p>
-		<p><%= address.city %>, <%= address.state %> <%= address.zip %></p>
-		<p><%= address.phone %></p>
-	<% end %>
-</p>
-
-<h3>Team</h3>
-<p>
-	<% @company.contacts.each do |contact| %>
-		<p>
-			<strong><%= contact.name %></strong>, <%= contact.role %>
-		</p>
-	<% end %>
-</p>
-
-<h3>Media</h3>
-<div class="well clearfix">
-	<div class="col-md-4">
-		<p>
-			<strong>Logo</strong><br/>
-			<%= image_tag @company.default_logo, :class=> 'img-responsive' %>
-		</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<p>
+				<%= image_tag @company.default_logo, :class=> 'img-responsive' %>
+			</p>
+		</div>
+		<div class="col-md-10">
+			<h1><%= @company.name %></h1>
+			<small><%= link_to 'Edit', edit_company_path(@company) %></small>
+		</div>
 	</div>
-	<div class="col-md-4">
-		<p>
-			<strong>Company Image</strong><br/>
-			<%= image_tag @company.default_image, :class=> 'img-responsive' %>
-		</p>
-	</div>
-	<div class="col-md-4">
-		<strong>Video</strong><br/>
-		<p class="embed-container">
-			<%= embed(@company.default_video) %>
-		</p>
+	<hr/>
+	<div class="row">
+		<div class="col-md-9">
+			<ul class="list-group">
+				<li class="list-group-item clearfix">
+					<div class="col-md-3">
+						<%= link_to 'Recruit team members', '#' %>
+					</div>
+					<div class="col-md-7">
+					</div>
+					<div class="col-md-2">
+						<%= link_to 'Setup', '#', class: 'btn btn-default' %>
+					</div>
+				</li>
+				<li class="list-group-item clearfix">
+					<div class="col-md-3">
+						<%= link_to 'Find Freelancers', '#' %>
+					</div>
+					<div class="col-md-7">
+					</div>
+					<div class="col-md-2">
+						<%= link_to 'Setup', '#', class: 'btn btn-default' %>
+					</div>
+				</li>
+				<li class="list-group-item clearfix">
+					<div class="col-md-3">
+						<%= link_to 'Apply to an Incubator', '#' %>
+					</div>
+					<div class="col-md-7">
+					</div>
+					<div class="col-md-2">
+						<%= link_to 'Setup', '#', class: 'btn btn-default' %>
+					</div>
+				</li>
+			</ul>
+					<% if !@company.image.blank? %>
+					<div class="card">
+						<h3>Images</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+						<p>
+							<%= image_tag @company.default_image, :class=> 'img-responsive' %>
+						</p>
+					</div>
+					<% end %>
+					<% if !@company.pitch.blank? %>
+						<div class="card">
+							<p>
+								<%= @company.pitch %>
+							</p>
+							<small><%= link_to 'Edit', edit_company_path(@company) %></small>
+						</div>
+					<% end %>
+					<% if !@company.video.blank? %>
+					<h3>Video</h3>
+						<div class="card">
+							 <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+							<p class="embed-container">
+								<%= embed(@company.default_video) %>
+							</p>
+						</div>
+					<% end %>
+					
+				
+			
+		  	<% if !@company.product.blank? %>
+					<h3>Product</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+					<div class="card">
+						<p>
+							<%= @company.product %>
+						</p>
+					</div>
+				<% end %>
+				<% if !@company.products.blank? %>
+					<div class="card">
+					<p class="lead">Launches</p>
+					<ul class="list-group">
+						<% @company.products.each do |product| %>
+						<li class="list-group-item clearfix">
+							<div class="col-md-8">
+								<h4><%= product.title %></h4>
+						    
+						    <p><%= product.release %></p>
+						    <p><%= product.launched %></p>
+						    <p><%= product.summary %></p>
+						  </div>
+							<div class="col-md-4">
+								<p>
+									<strong>Logo</strong><br/>
+									<%= link_to product_path(product) do %>
+										<%= image_tag product.default_logo, :class=> 'img-responsive' %>
+									<% end %>
+								</p>
+							</div>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+	    <% if !@company.contacts.blank? %>
+				<h3>Team</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+				<div class="card">
+					<p>
+						<% @company.contacts.each do |contact| %>
+							<p>
+								<strong><%= contact.name %></strong>, <%= contact.role %>
+							</p>
+						<% end %>
+					</p>
+				</div>
+			<% end %>
+			<% if !@company.addresses.blank? %>
+				<h3>Locations</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+				<div class="card">
+					<p>
+						<% @company.addresses.each do |address| %>
+							<p><%= address.address1 %></p>
+							<p><%= address.address2 %></p>
+							<p><%= address.city %>, <%= address.state %> <%= address.zip %></p>
+							<p><%= address.phone %></p>
+						<% end %>
+					</p>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-md-3">
+			<% if !@company.category.blank? %>
+				<ul class="list-inline">
+					<i class="fa fa-bookmark"></i>
+					<li><%= @company.category %></li>
+				</ul>
+			<% end %>
+			<% if !@company.compsize.blank? %>
+				<ul class="list-inline">
+					<i class="fa fa-users"></i>
+					<li><%= @company.compsize %></li>
+				</ul>
+			<% end %>
+			<% if !@company.market.blank? %>
+				<ul class="list-inline">
+					<i class="fa fa-tags"></i>
+					<% @company.market.each do |market| %>
+						<li><%= market %><li>
+					<% end %>
+				</ul>
+			<% end %>
+			<% if !@company.location.blank? %>
+				<ul class="list-inline">
+					<i class="fa fa-map-marker"></i>
+					<% @company.location.each do |location| %>
+						</li><%= location %><li>
+					<% end %>
+				</ul>
+			<% end %>
+			<ul class="list-inline">
+				<% if !@company.website.blank? %>
+					<li>
+						<%= link_to @company.website do %>
+							<i class="fa fa-link"></i>
+						<% end %>
+					</li>
+				<% end %>
+				<% if !@company.linkedin.blank? %>
+					<li>
+						<%= link_to @company.linkedin do %>
+							<i class="fa fa-linkedin"></i>
+						<% end %>
+					</li>
+				<% end %>
+				<% if !@company.blog.blank? %>
+					<li>
+						<%= link_to  @company.blog do %>
+							<i class="fa fa-twitter"></i>
+						<% end %>
+					</li>
+				<% end %>
+				<% if !@company.facebook.blank? %>
+					<li>
+						<%= link_to @company.facebook do %>
+							<i class="fa fa-facebook"></i>
+						<% end %>
+					</li>
+				<% end %>
+				<% if !@company.blog.blank? %>
+					<li>
+						<%= link_to  @company.blog do %>
+							<i class="fa fa-instagram"></i>
+						<% end %>
+					</li>
+				<% end %>
+				<% if !@company.blog.blank? %>
+					<li>
+						<%= link_to  @company.blog do %>
+							<i class="fa fa-rss"></i>
+						<% end %>
+					</li>
+				<% end %>
+				<% if !@company.blog.blank? %>
+					<li>
+						<%= link_to  @company.blog do %>
+							<i class="fa fa-product-hunt"></i>
+						<% end %>
+					</li>
+				<% end %>
+			</ul>
+			<hr/>
+			<h4>Jobs</h4>
+			 <p><%= link_to 'Post A Job', '#', class: 'btn btn-default btn-block btn-lg' %></p>
+			 <p><%= link_to 'Find A Job', '#', class: 'btn btn-success btn-block btn-lg' %></p>
+			<hr/>
+			<h4>Freelance Opportunities</h4>
+			 <p><%= link_to 'Post A Contract Project', '#', class: 'btn btn-default btn-block btn-lg' %></p>
+			 <p><%= link_to 'Browse Freelancers', '#', class: 'btn btn-success btn-block btn-lg' %></p>
+		</div>
 	</div>
 </div>
-
-<h3>Links</h3>
-<p>
-	<%= link_to 'Facebook', @company.facebook %>
-</p>
-<p>
-	<%= link_to 'Linkedin', @company.linkedin %>
-</p>
-<p>
-	<%= link_to 'Blog', @company.blog %>
-</p>
-<p>
-	<%= link_to 'Crunchbase', @company.crunchbase %>
-</p>
-
-<h3>Products</h3>
-<p>
-	<% @company.products.each do |product| %>
-		<h4><%= product.title %></h4>
-    <p><%= product.summary %></p>
-    <p><%= product.release %></p>
-    <p><%= product.launched %></p>
-    <p><%= link_to 'Product Website', product.website %></p>
-    <p><%= product.description %></p>
-    <div class="well clearfix">
-			<div class="col-md-4">
-				<p>
-					<strong>Logo</strong><br/>
-					<%= image_tag product.default_logo, :class=> 'img-responsive' %>
-				</p>
-			</div>
-			<div class="col-md-4">
-				<p>
-					<strong>Company Image</strong><br/>
-					<%= image_tag product.default_image, :class=> 'img-responsive' %>
-				</p>
-			</div>
-			<div class="col-md-4">
-				<strong>Video</strong><br/>
-				<p class="embed-container">
-					<%= embed(product.default_video) %>
-				</p>
-			</div>
-		</div>
-	<% end %>
-</p>

@@ -12,6 +12,7 @@
  *
  *= require jquery-ui
  *= require jquery.tagit.css
+ *= require bootstrap-datetimepicker
  *= require_tree .
  *= require_self
  */
