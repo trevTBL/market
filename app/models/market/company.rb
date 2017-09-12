@@ -1,5 +1,6 @@
 module Market
   class Company < ActiveRecord::Base
+  	resourcify
   	belongs_to :user
 		has_many :products, inverse_of: :company
 		accepts_nested_attributes_for :products, reject_if: :all_blank, allow_destroy: true
@@ -12,6 +13,8 @@ module Market
 
 		acts_as_taggable
 	  acts_as_taggable_on :market, :location
+
+	  acts_as_followable
 
 	  
 	  def default_image

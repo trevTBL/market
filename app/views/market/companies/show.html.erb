@@ -7,7 +7,10 @@
 		</div>
 		<div class="col-md-10">
 			<h1><%= @company.name %></h1>
-			<small><%= link_to 'Edit', edit_company_path(@company) %></small>
+			<% if @company.bob? %>
+				<p><span class="label label-primary">This is a black-owned enterprise</span></p>
+			<% end %>
+			<small><%= link_to 'Edit', edit_company_path(@company) if can? :update, @company %></small>
 		</div>
 	</div>
 	<hr/>
@@ -16,7 +19,7 @@
 		
 					<% if !@company.image.blank? %>
 					<div class="card">
-						<h3>Images</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+						<h3>Images</h3> 
 						<p>
 							<%= image_tag @company.default_image, :class=> 'img-responsive' %>
 						</p>
@@ -27,13 +30,13 @@
 							<p>
 								<%= @company.pitch %>
 							</p>
-							<small><%= link_to 'Edit', edit_company_path(@company) %></small>
+							
 						</div>
 					<% end %>
 					<% if !@company.video.blank? %>
 					<h3>Video</h3>
 						<div class="card">
-							 <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+							 
 							<p class="embed-container">
 								<%= embed(@company.default_video) %>
 							</p>
@@ -43,7 +46,7 @@
 				
 			
 		  	<% if !@company.product.blank? %>
-					<h3>Product</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+					<h3>Product</h3> 
 					<div class="card">
 						<p>
 							<%= @company.product %>
@@ -77,7 +80,7 @@
 			</div>
 		<% end %>
 	    <% if !@company.contacts.blank? %>
-				<h3>Team</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+				<h3>Team</h3> 
 				<div class="card">
 					<p>
 						<% @company.contacts.each do |contact| %>
@@ -89,7 +92,7 @@
 				</div>
 			<% end %>
 			<% if !@company.addresses.blank? %>
-				<h3>Locations</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
+				<h3>Locations</h3> 
 				<div class="card">
 					<p>
 						<% @company.addresses.each do |address| %>

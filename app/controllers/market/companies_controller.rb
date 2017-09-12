@@ -13,6 +13,7 @@ module Market
     def new
         @user = current_user
         @company = @user.companies.new
+        authorize! :create, @company
         products = @company.products.build if @company.products.count < 1
         3.times {@company.contacts.build} if @company.contacts.count < 1
         1.times {@company.addresses.build} if @company.addresses.count < 1
@@ -31,6 +32,7 @@ module Market
 
     def edit
         @company = Company.find(params[:id])
+        authorize! :update, @company
     end
 
     def update
@@ -49,6 +51,7 @@ module Market
         params.require(:company).permit(
             :user_id,
             :id,
+            :bob,
             :name,
             :logo,
             :pitch,
