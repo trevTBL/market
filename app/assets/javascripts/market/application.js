@@ -15,6 +15,6 @@
 //= require tag-it
 //= require moment
 //= require bootstrap-datetimepicker
-//= jquery-simply-countable/*
+//= jquery-simply-countable/jquery.simplyCountable.js
 //= require_tree .
 
