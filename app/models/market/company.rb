@@ -37,5 +37,9 @@ module Market
 				return self.video
 			end
 		end
+
+		def to_s
+			self.name
+		end
   end
 end

@@ -1,10 +1,45 @@
-<h1>Companies#edit</h1>
-<p>Find me in app/views/market/companies/edit.html.erb</p>
+
+	<div class="container">
+		<p class="lead">What do you want to do?</p>
+		<ul class="list-group">
+			<li class="list-group-item clearfix">
+				<div class="col-md-3">
+					<%= link_to 'Recruit team members', '#' %>
+				</div>
+				<div class="col-md-7">
+				</div>
+				<div class="col-md-2">
+					<%= link_to 'Setup', '#', class: 'btn btn-default' %>
+				</div>
+			</li>
+			<li class="list-group-item clearfix">
+				<div class="col-md-3">
+					<%= link_to 'Find Freelancers', '#' %>
+				</div>
+				<div class="col-md-7">
+				</div>
+				<div class="col-md-2">
+					<%= link_to 'Setup', '#', class: 'btn btn-default' %>
+				</div>
+			</li>
+			<li class="list-group-item clearfix">
+				<div class="col-md-3">
+					<%= link_to 'Apply to an Incubator', '#' %>
+				</div>
+				<div class="col-md-7">
+				</div>
+				<div class="col-md-2">
+					<%= link_to 'Setup', '#', class: 'btn btn-default' %>
+				</div>
+			</li>
+		</ul>
+	</div>
 	<%= simple_form_for @company do |f| %>
 	  <div class="container">
 	  	<hr/>
 				<div class="row">
 					<div class="col-md-10">
+						<h1>Edit <%= @company %></h1>
 					</div>
 					<div class="col-md-2">
 						<%= f.submit class: 'btn btn-primary btn-lg btn-block' %>

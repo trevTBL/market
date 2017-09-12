@@ -13,38 +13,7 @@
 	<hr/>
 	<div class="row">
 		<div class="col-md-9">
-			<ul class="list-group">
-				<li class="list-group-item clearfix">
-					<div class="col-md-3">
-						<%= link_to 'Recruit team members', '#' %>
-					</div>
-					<div class="col-md-7">
-					</div>
-					<div class="col-md-2">
-						<%= link_to 'Setup', '#', class: 'btn btn-default' %>
-					</div>
-				</li>
-				<li class="list-group-item clearfix">
-					<div class="col-md-3">
-						<%= link_to 'Find Freelancers', '#' %>
-					</div>
-					<div class="col-md-7">
-					</div>
-					<div class="col-md-2">
-						<%= link_to 'Setup', '#', class: 'btn btn-default' %>
-					</div>
-				</li>
-				<li class="list-group-item clearfix">
-					<div class="col-md-3">
-						<%= link_to 'Apply to an Incubator', '#' %>
-					</div>
-					<div class="col-md-7">
-					</div>
-					<div class="col-md-2">
-						<%= link_to 'Setup', '#', class: 'btn btn-default' %>
-					</div>
-				</li>
-			</ul>
+		
 					<% if !@company.image.blank? %>
 					<div class="card">
 						<h3>Images</h3> <small><%= link_to 'Edit', edit_company_path(@company) %></small>
@@ -177,9 +146,9 @@
 						<% end %>
 					</li>
 				<% end %>
-				<% if !@company.blog.blank? %>
+				<% if !@company.twitter.blank? %>
 					<li>
-						<%= link_to  @company.blog do %>
+						<%= link_to  @company.twitter do %>
 							<i class="fa fa-twitter"></i>
 						<% end %>
 					</li>
@@ -191,9 +160,9 @@
 						<% end %>
 					</li>
 				<% end %>
-				<% if !@company.blog.blank? %>
+				<% if !@company.instagram.blank? %>
 					<li>
-						<%= link_to  @company.blog do %>
+						<%= link_to  @company.instagram do %>
 							<i class="fa fa-instagram"></i>
 						<% end %>
 					</li>
@@ -205,9 +174,9 @@
 						<% end %>
 					</li>
 				<% end %>
-				<% if !@company.blog.blank? %>
+				<% if !@company.producthunt.blank? %>
 					<li>
-						<%= link_to  @company.blog do %>
+						<%= link_to  @company.producthunt do %>
 							<i class="fa fa-product-hunt"></i>
 						<% end %>
 					</li>
