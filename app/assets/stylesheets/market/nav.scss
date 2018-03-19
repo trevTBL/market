@@ -11,6 +11,10 @@ $light-gray: #e7e7e7;
 $green: #35b729;
 $dark-gray: #37474F;
 
+.navbar{
+  border-radius: 0;
+}
+
 .navbar-brand {
     float: left;
     height: 50px;
@@ -147,3 +151,32 @@ a {
   }
 }
 
+.twb-body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.twb-content {
+  flex: 1;
+}
+
+.twb-page{
+  padding: 2rem 2rem;
+
+  @media (min-width: 992px) {
+    padding: 4rem;
+  }
+}
+
+.spacer{
+  height: 48px;
+
+  &.--sm{
+    height: 24px;
+  }
+}
+
+.page{
+  padding: 48px;
+}

@@ -2,6 +2,8 @@ require_dependency "market/application_controller"
 
 module Market
   class CompaniesController < ApplicationController
+    load_and_authorize_resource
+
     def index
         @company = Company.all
     end
