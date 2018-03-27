@@ -24,7 +24,8 @@
     <meta property="twitter:image" content="<%# default_image(yield(:image)) %>">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+	 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
@@ -38,7 +39,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="twb-body">
-	
+	<div class="top-bar">
+    <ul class="list-inline">
+      <li><a href="<%= main_app.root_path %>">Community</a></li>
+      <li><a href="<%= explorer.root_path %>">Navigator</a></li>
+      <li><a href="<%= market.root_path %>">Market</a></li>
+    </ul>
+  </div>
 		
 			<nav class="navbar navbar-default">
 		  <div class="container-fluid">
@@ -51,18 +58,46 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		      <%= link_to root_url, :class=>'navbar-brand' do %>
-		      	<%= image_tag 'market/logo273.png' %>
+		      	<%= image_tag 'brand-clr-300.png' %>
 		      <% end %>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <ul class="nav navbar-nav navbar-right">
+		      <ul class="nav navbar-nav navbar-left">
 		      	<li><%= link_to 'Find Work', companies_path %></li>
 		      	<li><%= link_to 'Post Job', new_company_path %></li>
 		      	
 		      	<li><%= link_to 'Browse Companies', companies_path %></li>
-		      	<li><%= link_to 'Manage', user_path(current_user) if current_user %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+		      	<li class="dropdown">
+              <%= link_to edit_user_path(current_user), :class=> "dropdown-toggle" , :data=> {:toggle=>'dropdown'} do %>
+                <span title='Account', data-toggle= 'tooltip', data-placement='bottom'>
+                  <i class='fa fa-user fa-lg'></i>
+                  <span class="caret"></span></span>
+              <% end %>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to 'Notifications', main_app.notifications_path %>
+                </li>
+                <li>
+                  <%= link_to 'Messages', main_app.conversations_path %>
+                </li>
+                <li>
+                  <%= link_to 'View Profile', main_app.user_path(current_user) %>
+                </li>
+                <li>
+                  <%= link_to 'Edit Profile', main_app.edit_user_path(current_user) %>
+                </li>
+                <li>
+                  <%= link_to 'Manage Account', main_app.manage_account_path %>
+                </li>
+                <li>
+                  <%= link_to 'Logout', main_app.logout_path %>
+                </li>
+              </ul>
+            </li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->

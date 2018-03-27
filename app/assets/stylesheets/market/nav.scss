@@ -28,7 +28,7 @@ $dark-gray: #37474F;
 }
 
 .navbar-default{
-    background-color: $black;
+    background-color: $green;
     border:0;
     border-bottom:1px solid $white;
     padding-bottom:4px;
@@ -49,7 +49,7 @@ $dark-gray: #37474F;
 }
 
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover{
-	color: $green;
+	color: $white;
 }
 
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
@@ -59,11 +59,11 @@ $dark-gray: #37474F;
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     color: $white;
-    background-color: $black;
+    background-color: $green;
 }
 
 .nav-social{
-  background:#000;
+  background:#008600;
 
   .fa{
     font-size:1.4rem;
@@ -73,7 +73,7 @@ $dark-gray: #37474F;
 }
 
 .dropdown-menu {
-    background-color:$black;
+    background-color:$green;
     color:$white;
 
     li>a{
@@ -130,13 +130,14 @@ a {
 }
 
 .top-bar{
-  background-color:$green;
+  background-color:#008600;
   padding:0 24px;
   margin:0;
-  font-size:1.2rem;
+  font-size:1.1rem;
+  line-height: 3.1rem;
   color:#fff;
-  height:26px;
-  line-height:26px;
+  height:28px;
+  text-transform:uppercase;
 
   p{
     margin:0;
